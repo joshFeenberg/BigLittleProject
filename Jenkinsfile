@@ -6,6 +6,14 @@ pipeline{
         stage('Build') {
             steps {
                 echo 'Building...'
+                script {
+                    def buildSuccess = true
+                    if (!buildSuccess) {
+                        error('Build failed!')
+                    }else {
+                        echo 'Build succeeded!'
+                    }
+                }
             }
         }
         stage('Test') {
